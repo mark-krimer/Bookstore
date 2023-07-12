@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мастер и Маргарита</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <ul>
+        <li><a href="/">Main</a></li>
+        <li><a href="/books">Books</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+    <div class="product-inner">
+      <div class="product-wrap">
+        <img src="{{ url_for('static', filename='img/master_and_margarita_cover.jpg') }}">
+        <div class="actions">
+          <a href="" class="add-to-cart"></a>
+          <a href="" class="quickview"></a>
+          <a href="" class="wishlist"></a>
+      </div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-title"><a href="">The Master and Margarita</a></h3>
+        <p class="product-title">The Master and Margarita is a novel by Mikhail Afanasyevich Bulgakov, work on which began in the late 1920s and continued until the writer's death. The novel refers to unfinished works; After the death of her husband, the writer's widow, Elena Sergeevna, carried out editing and bringing together the draft notes.</p>
+        <span class="price">$17.49</span>
+      </div>
+    </div>
+</body>
+</html>

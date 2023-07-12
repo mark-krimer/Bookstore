@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Стихи - Есенин</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Main</a></li>
+            <li><a href="/books">Books</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="product-inner">
+      <div class="product-wrap">
+        <img src="{{ url_for('static', filename='img/poems_cover.jpg') }}">
+        <div class="actions">
+          <a href="" class="add-to-cart"></a>
+          <a href="" class="quickview"></a>
+          <a href="" class="wishlist"></a>
+      </div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-title"><a href="">Book Of Poems</a></h3>
+        <p class="product-title">
+            From the first collections of poetry ("Radunitsa", 1916; "Rural Book of Hours", 1918) he appeared as a subtle lyricist, a master of a deeply psychologized landscape, a singer of peasant Rus', an expert in the folk language and folk soul.
+        </p>
+        <span class="price">$14.99</span>
+      </div>
+    </div>
+</body>
+</html>

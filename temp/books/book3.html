@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Idiot</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <ul>
+        <li><a href="/">Main</a></li>
+        <li><a href="/books">Books</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+    <div class="product-inner">
+      <div class="product-wrap">
+        <img src="{{ url_for('static', filename='img/idiot_cover.jpg') }}">
+        <div class="actions">
+          <a href="" class="add-to-cart"></a>
+          <a href="" class="quickview"></a>
+          <a href="" class="wishlist"></a>
+      </div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-title"><a href="">The Idiot</a></h3>
+        <p class="product-title">The title is an ironic reference to the central character of the novel, Prince Lev Nikolayevich Myshkin, a young man whose goodness, open-hearted simplicity and guilelessness lead many of the more worldly characters he encounters to mistakenly assume that he lacks intelligence and insight. In the character of Prince Myshkin, Dostoevsky set himself the task of depicting "the positively good and beautiful man."</p>
+        <span class="price">$21.99</span>
+      </div>
+    </div>
+</body>
+</html>
