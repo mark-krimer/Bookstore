@@ -1,27 +1,10 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bookstore</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-    <nav>
-        <ul>
-            <li><a href="/">Main</a></li>
-            <li><a href="/books">Books</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-    </nav>
-
-<div class="shopping-cart">
+{% block content %}
+  <div class="shopping-cart">
     <!-- Title -->
     <div class="title">
-      Книжная корзина
+    Book Cart
     </div>
 
     <!-- Product #1 -->
@@ -81,13 +64,13 @@
         <div class="image">
           <img src="{{ url_for('static', filename='img/idiot_cover.jpg') }}" alt="" height="70px">
         </div>
-  
+
         <div class="description">
           <span>Dostoevsky Fydor</span>
           <span>The Idiot</span>
           <span>Novel</span>
         </div>
-  
+
         <div class="quantity">
           <button class="minus-btn" type="button" name="button">
             -
@@ -97,68 +80,70 @@
             +
           </button>
         </div>
-  
+
         <div class="total-price">$21.99</div>
         <div class="details"><a class="btn" href="{{ url_for('book', id=3) }}">More Info</a></div>
       </div>
 
   </div>
-</body>
+{% endblock %}
 
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript">
-    $('.minus-btn').on('click', function(e) {
-          e.preventDefault();
-          var $this = $(this);
-          var $input = $this.closest('div').find('input');
-          var value = parseInt($input.val());
+{% block scripts %}
+  	{{ super() }}
+  	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  	<script type="text/javascript">
+      	$('.minus-btn').on('click', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            var $input = $this.closest('div').find('input');
+            var value = parseInt($input.val());
 
-          var $total = $this.parent('div').parent('div').find('.total-price');
-          var price = parseFloat($total.text().slice(1));
+            var $total = $this.parent('div').parent('div').find('.total-price');
+            var price = parseFloat($total.text().slice(1));
 
-          price = price / value;
-
-          price = price.toFixed(2);
-
-          if (value > 1) {
-              value = value - 1;
-                $total.text('$' + price * value);
-          } else {
-              value = 0;
-          }
-
-          $input.val(value);
-
-      });
-
-      $('.plus-btn').on('click', function(e) {
-          e.preventDefault();
-          var $this = $(this);
-          var $input = $this.closest('div').find('input');
-          var value = parseInt($input.val());
-
-          var $total = $this.parent('div').parent('div').find('.total-price');
-          var price = parseFloat($total.text().slice(1));
-
-          if (value == 0) {
-            price = price / 1;
-          } else {
             price = price / value;
-          }
 
-          price = price.toFixed(2);
-          if (value < 100) {
+            price = price.toFixed(2);
+
+            if (value > 1) {
+                value = value - 1;
+                $total.text('$' + price * value);
+            } else {
+                value = 0;
+            }
+
+            $input.val(value);
+
+        });
+
+        $('.plus-btn').on('click', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            var $input = $this.closest('div').find('input');
+            var value = parseInt($input.val());
+
+            var $total = $this.parent('div').parent('div').find('.total-price');
+            var price = parseFloat($total.text().slice(1));
+
+            if (value == 0) {
+              	price = price / 1;
+            } else {
+              	price = price / value;
+            }
+
+            price = price.toFixed(2);
+            if (value < 100) {
                 value = value + 1;
-          } else {
-              value = 100;
-          }
+            } else {
+                value = 100;
+            }
 
-            $total.text('$' + price * value);
-          $input.val(value);
-      });
+              	$total.text('$' + price * value);
+            $input.val(value);
+        });
 
-    $('.like-btn').on('click', function() {
-      $(this).toggleClass('is-active');
-    });
-  </script>
-</html>
+		$('.like-btn').on('click', function() {
+        	$(this).toggleClass('is-active');
+    	});
+    </script>
+{% endblock %}
