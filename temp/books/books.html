@@ -1,149 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="shopping-cart">
-    <!-- Title -->
-    <div class="title">
-    Book Cart
+    <div class="product-inner">
+      	<div class="product-wrap">
+        	<img src="{{ book.cover }}">
+        	<div class="actions">
+          		<a href="" class="add-to-cart"></a>
+          		<a href="" class="quickview"></a>
+          		<a href="" class="wishlist"></a>
+        	</div>
+    	</div>
+    	<div class="product-info">
+    		<h3 class="product-title"><a href="">{{ book.name }}</a></h3>
+        	<p class="product-title">{{ book.description }}</p>
+        	<span class="price">${{ book.price }}</span>
+    	</div>
     </div>
-
-    <!-- Product #1 -->
-    <div class="item">
-      <div class="image">
-        <img src="{{ url_for('static', filename='img/poems_cover.jpg') }}" alt="" height="70px">
-      </div>
-
-      <div class="description">
-        <span>Book Of Poems</span>
-        <span>Есенин С.А.</span>
-        <span>Poems</span>
-      </div>
-
-      <div class="quantity">
-        <button class="minus-btn" type="button" name="button">
-          -
-        </button>
-        <input type="text" name="name" value="1">
-        <button class="plus-btn" type="button" name="button">
-          +
-        </button>
-      </div>
-
-      <div class="total-price">$14.99</div>
-      <div class="details"><a class="btn" href="{{ url_for('book', id=1) }}">More Info</a></div>
-    </div>
-
-    <!-- Product #2 -->
-    <div class="item">
-      <div class="image">
-        <img src="{{ url_for('static', filename='img/master_and_margarita_cover.jpg') }}" alt="" height="70px">
-      </div>
-
-      <div class="description">
-        <span>Булгаков М.А.</span>
-        <span>Мастер и Маргарита</span>
-        <span>Novel</span>
-      </div>
-
-      <div class="quantity">
-        <button class="minus-btn" type="button" name="button">
-          -
-        </button>
-        <input type="text" name="name" value="1">
-        <button class="plus-btn" type="button" name="button">
-          +
-        </button>
-      </div>
-
-      <div class="total-price">$17.49</div>
-      <div class="details"><a class="btn" href="{{ url_for('book', id=2) }}">More Info</a></div>
-    </div>
-
-    <!-- Product #3 -->
-    <div class="item">
-        <div class="image">
-          <img src="{{ url_for('static', filename='img/idiot_cover.jpg') }}" alt="" height="70px">
-        </div>
-
-        <div class="description">
-          <span>Dostoevsky Fydor</span>
-          <span>The Idiot</span>
-          <span>Novel</span>
-        </div>
-
-        <div class="quantity">
-          <button class="minus-btn" type="button" name="button">
-            -
-          </button>
-          <input type="text" name="name" value="1">
-          <button class="plus-btn" type="button" name="button">
-            +
-          </button>
-        </div>
-
-        <div class="total-price">$21.99</div>
-        <div class="details"><a class="btn" href="{{ url_for('book', id=3) }}">More Info</a></div>
-      </div>
-
-  </div>
-{% endblock %}
-
-{% block scripts %}
-  	{{ super() }}
-  	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  	<script type="text/javascript">
-      	$('.minus-btn').on('click', function(e) {
-            e.preventDefault();
-            var $this = $(this);
-            var $input = $this.closest('div').find('input');
-            var value = parseInt($input.val());
-
-            var $total = $this.parent('div').parent('div').find('.total-price');
-            var price = parseFloat($total.text().slice(1));
-
-            price = price / value;
-
-            price = price.toFixed(2);
-
-            if (value > 1) {
-                value = value - 1;
-                $total.text('$' + price * value);
-            } else {
-                value = 0;
-            }
-
-            $input.val(value);
-
-        });
-
-        $('.plus-btn').on('click', function(e) {
-            e.preventDefault();
-            var $this = $(this);
-            var $input = $this.closest('div').find('input');
-            var value = parseInt($input.val());
-
-            var $total = $this.parent('div').parent('div').find('.total-price');
-            var price = parseFloat($total.text().slice(1));
-
-            if (value == 0) {
-              	price = price / 1;
-            } else {
-              	price = price / value;
-            }
-
-            price = price.toFixed(2);
-            if (value < 100) {
-                value = value + 1;
-            } else {
-                value = 100;
-            }
-
-              	$total.text('$' + price * value);
-            $input.val(value);
-        });
-
-		$('.like-btn').on('click', function() {
-        	$(this).toggleClass('is-active');
-    	});
-    </script>
 {% endblock %}
